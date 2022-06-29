@@ -1,0 +1,10 @@
+from django.urls import path
+
+from data.views import RainfallAndSewerPipeInfoApiView
+
+app_name = "data"
+
+urlpatterns = [
+    path('rainfall-and-drainpipe-info/<gubn>/<datetime>/',
+         RainfallAndSewerPipeInfoApiView.as_view(), name='rainfall_and_sewerpipe_info'),
+]
