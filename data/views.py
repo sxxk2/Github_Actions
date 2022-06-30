@@ -2,7 +2,8 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from data.models import GuName as GuNameModel
+from data.models import GuName as GuNameModel, Rainfall
+from data.serializers import GuNameModelSerializer, SewerPipeModelSerializer, RainfallModelSerializer
 
 """"""
 # Create your views here.
@@ -27,11 +28,9 @@ class RainfallAndSewerPipeInfoApiView(APIView):
         return object
 
     def get(self, request, gubn, datetime):
-
         print(gubn, datetime)
-
         gu_name = self.get_guname_object(gubn)
         if not gu_name:
             return Response({"error": "구 코드가 존재하지 않습니다."}, status=status.HTTP_404_NOT_FOUND)
         # serializer 사용해서 data response
-        return Response()
+        return Response(GuNameModelSerializer(gu_name, context={"datetime": datetime}).data, status=status.HTTP_200_OK)
