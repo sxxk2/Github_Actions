@@ -1,3 +1,5 @@
+import datetime
+
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 from .models import SewerPipe, Rainfall, GuName
@@ -29,24 +31,32 @@ class GuNameModelSerializer(ModelSerializer):
     """
     Assignee : 희석
 
-    Rainfall, SewerPipe 모델의 serializer 참조
+    View단에서 GuName 테이블의 오브젝트가 주어졌을 때
+    역참조를 통해 Rainfall, SewerPipe 모델의 쿼리셋을 가져오고
+    datetime_info로 필터하여 serializer data 전달
     """
-    rainfall = RainfallModelSerializer(many=True)
-    sewer_pipe = SewerPipeModelSerializer(many=True)
+    rainfall_data = serializers.SerializerMethodField()
+    sewer_pipe_data = serializers.SerializerMethodField()
 
-    """
-    # 기능 미구현 주석
-    # rainfall_data = serializers.SerializerMethodField()
-    # def get_rainfall_data(self, obj):
-    #     rainfalls = obj.rainfall
-    #     datetime = self.context["datetime"]
-    #
-    #     return {
-    #         "last_review": RainfallModelSerializer(rainfalls.filter()).data,
-    #     }
-    """
+    def get_rainfall_data(self, obj):
+        rainfalls = obj.rainfall
+        datetime_info = self.context["datetime"]
+        rainfall_serializer = RainfallModelSerializer(rainfalls.filter(
+            receive_time__gte=datetime_info,
+            receive_time__lt=datetime_info + datetime.timedelta(minutes=10)
+        ), many=True)
+        return rainfall_serializer.data
+
+    def get_sewer_pipe_data(self, obj):
+        sewer_pipe = obj.sewer_pipe
+        datetime_info = self.context["datetime"]
+        sewer_pipe_serializer = SewerPipeModelSerializer(sewer_pipe.filter(
+            mea_ymd__gte=datetime_info,
+            mea_ymd__lt=datetime_info + datetime.timedelta(minutes=1)
+        ), many=True)
+        return sewer_pipe_serializer.data
 
     class Meta:
         model = GuName
-        fields = ["gubn", "name", "rainfall", "sewer_pipe"]
+        fields = ["gubn", "name", "rainfall_data", "sewer_pipe_data"]
 
