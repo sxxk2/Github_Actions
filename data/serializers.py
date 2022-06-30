@@ -32,11 +32,11 @@ class GuNameModelSerializer(ModelSerializer):
     Rainfall, SewerPipe 모델의 serializer 참조
     """
     rainfall_data = serializers.SerializerMethodField()
-    rainfall_set = RainfallModelSerializer(many=True)
-    sewerpipe_set = SewerPipeModelSerializer(many=True)
+    rainfall = RainfallModelSerializer(many=True)
+    sewer_pipe = SewerPipeModelSerializer(many=True)
 
     def get_rainfall_data(self, obj):
-        rainfalls = obj.rainfall_set
+        rainfalls = obj.rainfall
         datetime = self.context["datetime"]
 
         return {
@@ -45,5 +45,5 @@ class GuNameModelSerializer(ModelSerializer):
 
     class Meta:
         model = GuName
-        fields = ["gubn", "name", "rainfall_set", "sewerpipe_set"]
+        fields = ["gubn", "name", "rainfall", "sewer_pipe"]
 

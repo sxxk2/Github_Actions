@@ -2,8 +2,8 @@ from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from data.models import GuName as GuNameModel, Rainfall
-from data.serializers import GuNameModelSerializer, SewerPipeModelSerializer, RainfallModelSerializer
+from data.models import GuName as GuNameModel
+from data.serializers import GuNameModelSerializer
 
 """"""
 # Create your views here.
