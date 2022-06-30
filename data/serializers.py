@@ -51,8 +51,8 @@ class GuNameModelSerializer(ModelSerializer):
         sewer_pipe = obj.sewer_pipe
         datetime_info = self.context["datetime"]
         sewer_pipe_serializer = SewerPipeModelSerializer(sewer_pipe.filter(
-            mea_ynd__gte=datetime_info,
-            mea_ynd__lt=datetime_info + datetime.timedelta(minutes=1)
+            mea_ymd__gte=datetime_info,
+            mea_ymd__lt=datetime_info + datetime.timedelta(minutes=1)
         ), many=True)
         return sewer_pipe_serializer.data
 
