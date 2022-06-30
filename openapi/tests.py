@@ -282,7 +282,7 @@ def save_sewerpipe_data(start, end, gubn, start_date, end_date):
             print(f"SIG_STA:{SIG_STA}")
             print(f"GUBN:{GUBN}")
 
-            SewerPipe(idn=IDN, gubn_nam=GUBN_NAM, mea_ynd=MEA_YMD, mea_wal=MEA_WAL,
+            SewerPipe(idn=IDN, gubn_nam=GUBN_NAM, mea_ymd=MEA_YMD, mea_wal=MEA_WAL,
                       sig_sta=SIG_STA, gubn_id=GUBN).save()
     except:
         print("========================================")
@@ -313,10 +313,16 @@ def save_sewerpipe_data_all_gubn(start_date, end_date):
     create_guname()
 '''
 
+
+
 """ init_data('table 이름'): 함수 파라미터 확인  data_rainfall, data_sewerpipe, data_guname """
-# init_data('data_sewerpipe')
-# save_sewerpipe_data_all_gubn(2022062900, 2022062905)
+
 # init_data('data_rainfall')
 # save_rainfall_data(1, 1000)
 
+# init_data('data_sewerpipe')
+# save_sewerpipe_data_all_gubn(2022062900, 2022062923)
+
+# init_data('data_sewerpipe')
+# save_sewerpipe_data(1, 1000, '01', 2022062900, 2022062923)
 
