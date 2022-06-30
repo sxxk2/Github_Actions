@@ -15,7 +15,7 @@ class SewerPipe(models.Model):
     idn = models.CharField(max_length=10)
     gubn = models.ForeignKey('GuName', on_delete=models.SET_NULL, null=True, related_name='sewer_pipe')   
     gubn_nam = models.CharField(max_length=5)
-    mea_ynd = models.DateTimeField()
+    mea_ymd = models.DateTimeField()
     mea_wal = models.FloatField()
     sig_sta = models.CharField(max_length=10)
     
