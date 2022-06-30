@@ -31,17 +31,20 @@ class GuNameModelSerializer(ModelSerializer):
 
     Rainfall, SewerPipe 모델의 serializer 참조
     """
-    rainfall_data = serializers.SerializerMethodField()
     rainfall = RainfallModelSerializer(many=True)
     sewer_pipe = SewerPipeModelSerializer(many=True)
 
-    def get_rainfall_data(self, obj):
-        rainfalls = obj.rainfall
-        datetime = self.context["datetime"]
-
-        return {
-            "last_review": RainfallModelSerializer(rainfalls.filter()).data,
-        }
+    """
+    # 기능 미구현 주석
+    # rainfall_data = serializers.SerializerMethodField()
+    # def get_rainfall_data(self, obj):
+    #     rainfalls = obj.rainfall
+    #     datetime = self.context["datetime"]
+    #
+    #     return {
+    #         "last_review": RainfallModelSerializer(rainfalls.filter()).data,
+    #     }
+    """
 
     class Meta:
         model = GuName

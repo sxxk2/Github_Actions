@@ -8,7 +8,7 @@ from data.serializers import GuNameModelSerializer
 """"""
 # Create your views here.
 
-# url : rainfall-and-drainpipe-info/<gubn>/<datetime>/
+# url : api/data/v1/rainfall-and-drainpipe-info/<gubn>/<datetime>/
 class RainfallAndSewerPipeInfoApiView(APIView):
     """
     Assignee : 희석

@@ -5,6 +5,6 @@ from data.views import RainfallAndSewerPipeInfoApiView
 app_name = "data"
 
 urlpatterns = [
-    path('rainfall-and-drainpipe-info/<gubn>/<datetime>/',
+    path('api/data/v1/rainfall-and-drainpipe-info/<gubn>/<datetime>/',
          RainfallAndSewerPipeInfoApiView.as_view(), name='rainfall_and_sewerpipe_info'),
 ]
