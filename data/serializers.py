@@ -15,7 +15,7 @@ class SewerPipeModelSerializer(ModelSerializer):
 class RainfallModelSerializer(ModelSerializer):
     '''
     Assignee : 민지
-
+    
     데이터 출력 예시와 동일하게 강우량계명, 10분우량 필드만 출력
     '''
     class Meta:
