@@ -1,5 +1,6 @@
 from django.db import models
 
+
 # Create your models here.
 
 class SewerPipe(models.Model):
@@ -13,13 +14,13 @@ class SewerPipe(models.Model):
     idn : 고유번호 | gubn : 구분코드 | gubn_nam : 구분명 | mea_ynd : 측정일자 | mea_wal : 측정수위 | sig_sta : 통신상태
     '''
     idn = models.CharField(max_length=10)
-    gubn = models.ForeignKey('GuName', on_delete=models.SET_NULL, null=True)   
+    gubn = models.ForeignKey('GuName', on_delete=models.SET_NULL, null=True)
     gubn_nam = models.CharField(max_length=5)
     mea_ynd = models.DateTimeField()
     mea_wal = models.FloatField()
     sig_sta = models.CharField(max_length=10)
-    
-    
+
+
 class Rainfall(models.Model):
     '''
     Assignee : 상백
@@ -37,7 +38,7 @@ class Rainfall(models.Model):
     gu_name = models.CharField(max_length=5)
     rainfall10 = models.FloatField()
     receive_time = models.DateTimeField()
-    gubn = models.ForeignKey('GuName', on_delete=models.SET_NULL, null=True)   
+    gubn = models.ForeignKey('GuName', on_delete=models.SET_NULL, null=True)
 
 
 class GuName(models.Model):
@@ -50,10 +51,5 @@ class GuName(models.Model):
     gubn 필드는 primary_key로 설정
     name 필드 ex) 강서구, 강남구,,,
     '''
-    gubn = models.CharField(max_length=5, primary_key=True)    
-    name = models.CharField(max_length=5)        
-
-
-
-
-
+    gubn = models.CharField(max_length=5, primary_key=True)
+    name = models.CharField(max_length=5)
