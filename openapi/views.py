@@ -1,11 +1,7 @@
 from rest_framework import permissions, status
 from rest_framework.response import Response
 from rest_framework.views import APIView
-
-from data.models import GuName as GuNameModel
-from .serializers import OpenAPISewerPipeModelSerializer
-
-from .tests import save_sewerpipe_data_all_gubn, save_sewerpipe_data, save_rainfall_data
+from .utils import save_sewerpipe_data_all_gubn, save_rainfall_data
 
 
 # url : openapi/data/save-previous-sewerpipe-data/<start_date>/<end_date>/
