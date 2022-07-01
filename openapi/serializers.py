@@ -7,7 +7,6 @@ class OpenAPISewerPipeModelSerializer(ModelSerializer):
     Assignee : 훈희
 
     기본 형태 작성
-
     '''
 
     class Meta:
