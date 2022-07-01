@@ -6,8 +6,7 @@ class OpenAPISewerPipeModelSerializer(ModelSerializer):
     '''
     Assignee : 훈희
 
-    API요청으로 원하는 값을 저장 할 수 있게 구성
-    사용할지 고민중
+    기본 형태 작성
 
     '''
 

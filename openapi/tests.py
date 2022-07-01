@@ -314,15 +314,19 @@ def save_sewerpipe_data_all_gubn(start_date, end_date):
 '''
 
 
-
-""" init_data('table 이름'): 함수 파라미터 확인  data_rainfall, data_sewerpipe, data_guname """
-
-# init_data('data_rainfall')
-# save_rainfall_data(1, 1000)
-
-# init_data('data_sewerpipe')
-# save_sewerpipe_data_all_gubn(2022062900, 2022062923)
-
-# init_data('data_sewerpipe')
-# save_sewerpipe_data(1, 1000, '01', 2022062900, 2022062923)
+''' 
+    사용 예시    
+    init_data('table 이름'): 함수 파라미터 확인  data_rainfall, data_sewerpipe, data_guname 
+    init_data('data_rainfall')
+    
+    save_rainfall_data(시작 값, 끝 값): 시작 값부터 끝 값까지 값을 불러와서 저장함 시작값은 최신값
+    save_rainfall_data(1, 1000)
+    
+    save_sewerpipe_data_all_gubn(사작 시간, 끝시간): 년도(4글자)월(2글자)일(2글자)분(2글자) 까지 입력
+    save_sewerpipe_data_all_gubn(2022062900, 2022062923)
+    
+    save_sewerpipe_data(시작 값, 끝 값, 구분번호, 사작 시간, 끝시간): 위 함수의 단건 저장 기능 
+    구분번호를 설정하여 해당 구분번호만 저장 가능
+    save_sewerpipe_data(1, 1000, '01', 2022062900, 2022062923)
+'''
 
