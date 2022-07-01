@@ -4,8 +4,6 @@ import requests
 import sqlite3
 import time
 
-from datetime import datetime
-
 ''' 장고에 등록 되어있지 않은 곳에서 장고 모델을 참조하기 위한 준비 '''
 import os
 
@@ -274,7 +272,7 @@ def save_sewerpipe_data(start, end, gubn, start_date, end_date):
             MEA_WAL = sewerpipe_list['MEA_WAL']
             SIG_STA = sewerpipe_list['SIG_STA']
             GUBN = sewerpipe_list['GUBN']
-            # mysqlite_save(RAINGAUGE_CODE)
+
             print(f"IDN:{IDN}")
             print(f"GUBN_NAM:{GUBN_NAM}")
             print(f"MEA_YMD:{MEA_YMD}")
@@ -294,6 +292,15 @@ def save_sewerpipe_data(start, end, gubn, start_date, end_date):
 
 
 def save_sewerpipe_data_all_gubn(start_date, end_date):
+    '''
+       Assignee : 훈희
+
+       하수관 정보를 공공 api에서 가져와서 저장하는 함
+       처음 변수인 start와 end는 해당 범위에서 몇개의 정보를 가져올지 설정
+       start_date와 end_date 가져올 데이터의 날짜 분 단위까지 작성
+
+       start_date : 가져올 정보의 시작 점 / end_date : 가져올 정보의 끝 점
+    '''
     gubn_nums = ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10', '11', '12', '13', '14', '15', '16', '17',
                  '18', '19', '20', '21', '22', '23', '24', '25']
     sewer_pipe_count = [4, 5, 3, 7, 12, 14, 8, 1, 2, 9, 11, 8, 11, 20, 12, 12, 13, 8, 12, 3, 6, 7, 21, 2, 4]
@@ -307,16 +314,13 @@ def save_sewerpipe_data_all_gubn(start_date, end_date):
 
 
 '''
-    함수 실행 부분 : data_guname 초기화 후 생성
+    *** 초기 data_guname 테이블 생성 *** 
+    data_guname 초기화 후 생성
 
     init_data('data_guname')
     create_guname()
-'''
 
-save_sewerpipe_data_all_gubn(2022062903, 2022062907)
-
-''' 
-    사용 예시    
+    *** 사용 예시 ***    
     init_data('table 이름'): 함수 파라미터 확인  data_rainfall, data_sewerpipe, data_guname 
     init_data('data_rainfall')
 
@@ -326,7 +330,7 @@ save_sewerpipe_data_all_gubn(2022062903, 2022062907)
     save_sewerpipe_data_all_gubn(사작 시간, 끝시간): 년도(4글자)월(2글자)일(2글자)분(2글자) 까지 입력
     save_sewerpipe_data_all_gubn(2022062900, 2022062923)
 
-    save_sewerpipe_data(시작 값, 끝 값, 구분번호, 사작 시간, 끝시간): 위 함수의 단건 저장 기능 
-    구분번호를 설정하여 해당 구분번호만 저장 가능
+    save_sewerpipe_data(시작 값, 끝 값, 구분 번호, 사작 시간, 끝시간): 위 함수의 단건 저장 기능 
+    구분 번호를 설정하여 해당 구분 번호만 저장 가능
     save_sewerpipe_data(1, 1000, '01', 2022062900, 2022062923)
 '''
