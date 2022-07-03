@@ -1,8 +1,7 @@
-name: CI
+name: Lint
 
 on:
   push:
-    branches: [ "main" ]
   pull_request:
     branches: [ "main" ]
 
@@ -35,6 +34,8 @@ jobs:
       run: |
         pipenv install
 
-    # - name: Run Test
-    #   run: |
-    #     pipenv run pytest
+    - name: Lint check
+      run: |
+        pipenv run isort --check-only .
+        pipenv run black --check .
+        pipenv run flake8
