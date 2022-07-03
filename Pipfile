@@ -10,6 +10,9 @@ requests = "*"
 beautifulsoup4 = "*"
 pymysql = "*"
 mysqlclient = "*"
+pre-commit = "*"
+black = "*"
+flake8 = "*"
 
 [dev-packages]
 

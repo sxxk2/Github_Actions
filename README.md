@@ -43,7 +43,7 @@
     - 서울시 하수관로 수위 현황과 강우량 정보 데이터를 수집
     - 출력값 중 GUBN_NAM과 GU_NAME 기준으로 데이터를 결합
     - 데이터는 JSON으로 전달
-  
+
   - **클라이언트 기능**
     - GUBN(구분코드)를 명시해서 REST API를 호출할 수 있음
     - 서버에서 전송받은 결과를 출력
@@ -56,7 +56,7 @@
 
 ## DB Modeling
 ![Untitled](https://user-images.githubusercontent.com/95380638/176635745-467ca0d2-c75f-44b5-9607-28202a1dd657.png)
-- **SewerPipe 모델** : 서울시 하수관로 수위 현황 데이터 저장 
+- **SewerPipe 모델** : 서울시 하수관로 수위 현황 데이터 저장
 - **Rainfall 모델** : 서울시 강우량 정보 데이터 저장
 - **GuName 모델** : GUBN(구분코드)와 해당하는 서울시 자치구 이름 저장, SewerPipe 및 Rainfall 모델과 각각 1:N 관계 설정
 
@@ -69,4 +69,3 @@
 | GET    | 서울시 하수관로 수위 현황과 강우량 정보 데이터를 수집 | http://127.0.0.1:8000/api/data/v1/rainfall-and-drainpipe-info/\<gubn\>/\<datetime\>/ |
 
 - **URL 설정 의도** : URL에 추가적인 확장 및 수정을 진행하는데 용이하다는 점에서 쿼리 파라미터로 Request URL 설정 진행
-
